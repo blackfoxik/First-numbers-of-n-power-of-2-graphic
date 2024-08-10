@@ -1,2 +1,4 @@
 # First-numbers-of-n-power-of-2-graphic
-First-numbers-of-n-power-of-2-graphic description
+Just to get more familiar with git flow.
+Start point: Program.cs
+
