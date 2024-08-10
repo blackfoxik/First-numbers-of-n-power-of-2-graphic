@@ -16,7 +16,7 @@ namespace Graphic
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //TODO: - Add implementation here
+            Application.Run(new MenuForm());
         }
     }
 }
