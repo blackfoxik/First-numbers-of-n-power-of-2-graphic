@@ -11,20 +11,20 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Graphic
 {
-    public partial class MenuForm : Form
+    public partial class FirstNumberOfNPowerOfTwoGraphicForm : Form
     {
-        public MenuForm()
+        public FirstNumberOfNPowerOfTwoGraphicForm()
         {
             InitializeComponent();
         }
 
-        private void построитьГрафикToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BuildGraphicToolStripMenuItemClick(object sender, EventArgs e)
         {
-           Clear();
+           ClearGraphic();
            int numberOfPower;
            if(textBox.Text == "")
            {
-                SetDefaultParametres();
+                SetDefaultParametresOfNumbers();
                 PrintParametres();
            }
            else if(int.TryParse(textBox.Text, out numberOfPower))
@@ -34,23 +34,24 @@ namespace Graphic
            }
         }
         
-
-        private void очиститьГрафикToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ClearGraphicToolStripMenuItemClick(object sender, EventArgs e)
         {
-            Clear();
+            ClearGraphic();
         }
 
-        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItemClick(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Выйти?","Внимание!",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if(MessageBox.Show("Exit?","Warning!",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Application.Exit(); 
             }
         }
-        private void SetDefaultParametres()
+
+        private void SetDefaultParametresOfNumbers()
         {
             for (int i = 0; i < 9; i++) CountNumbers.digitsArray[i] = 0;
         }
+
         private void PrintParametres()
         {
             for(int i = 0; i < 9; i++)
@@ -61,7 +62,8 @@ namespace Graphic
 
             }
         }
-        private void Clear()
+
+        private void ClearGraphic()
         {
             for( int i = 0; i < 9; i++)
             {
@@ -70,11 +72,11 @@ namespace Graphic
             }
         }
 
-        private void textBox_KeyDown(object sender, KeyEventArgs e)
+        private void TextBoxKeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyValue == (char)Keys.Enter)
             {
-                построитьГрафикToolStripMenuItem_Click(sender, null);
+                BuildGraphicToolStripMenuItemClick(sender, null);
             }
         }
     }
