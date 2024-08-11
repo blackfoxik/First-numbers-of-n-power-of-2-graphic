@@ -22,16 +22,15 @@ namespace Graphic
         {
            ClearGraphic();
            int numberOfPower;
-           if(textBox.Text == "")
+           if(IsNeedToBuildEmptyGraphic)
            {
                 SetDefaultParametresOfNumbers();
-                PrintParametres();
            }
            else if(int.TryParse(textBox.Text, out numberOfPower))
            {
                 CountNumbers.FillCounters(numberOfPower);
-                PrintParametres();
            }
+           PrintParametres();
         }
         
         private void ClearGraphicToolStripMenuItemClick(object sender, EventArgs e)
@@ -41,12 +40,33 @@ namespace Graphic
 
         private void ExitToolStripMenuItemClick(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Exit?","Warning!",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if(MessageBox.Show(Config.EXIT_CLARIFICATION_TEXT,Config.WARNING_WINDOW_NAME_TEXT,MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Application.Exit(); 
             }
         }
 
+        private void TextBoxKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == (char)Keys.Enter)
+            {
+                BuildGraphicToolStripMenuItemClick(sender, null);
+            }
+        }
+
+        private void ClearGraphic()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                CountNumbers.digitsArray[i] = 0;
+                this.chart.Series[i].Points.Clear();
+            }
+        }
+
+        private bool IsNeedToBuildEmptyGraphic()
+        {
+            return textBox.Text == Config.RESET_COMMAND_TEXT ? true : false;
+        }
         private void SetDefaultParametresOfNumbers()
         {
             for (int i = 0; i < 9; i++) CountNumbers.digitsArray[i] = 0;
@@ -59,25 +79,13 @@ namespace Graphic
                 this.chart.Series[i].Points.Add(CountNumbers.digitsArray[i]);
                 chart.Series[i]["PointWidth"] = "2.0";
                 chart.Series[i].IsValueShownAsLabel = true;
-
             }
         }
-
-        private void ClearGraphic()
-        {
-            for( int i = 0; i < 9; i++)
-            {
-                CountNumbers.digitsArray[i] = 0;
-                this.chart.Series[i].Points.Clear();
-            }
-        }
-
-        private void TextBoxKeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyValue == (char)Keys.Enter)
-            {
-                BuildGraphicToolStripMenuItemClick(sender, null);
-            }
-        }
+    }
+    struct Config
+    {
+        public static string RESET_COMMAND_TEXT = "";
+        public static string EXIT_CLARIFICATION_TEXT = "Exit?";
+        public static string WARNING_WINDOW_NAME_TEXT = "Warning!";
     }
 }
