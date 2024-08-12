@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Graphic
 {
@@ -20,7 +16,9 @@ namespace Graphic
             k8 = 7,
             k9 = 8
         }
-        public static int[] digitsArray = new int [9];
+
+        public static int[] digitsArray = new int[9];
+
         static public void FillCounters(int N)
         {
             for (int i = 0; i <= N; i++)
@@ -29,11 +27,13 @@ namespace Graphic
                 CountDigit(GetFirstDigit(Power));
             }
         }
+
         static public int GetFirstDigit(double number)
         {
             while (number >= 10) number /= 10;
             return (int)number;
         }
+
         static public void CountDigit(int digit)
         {
             switch (digit)
@@ -68,6 +68,11 @@ namespace Graphic
                 default:
                     break;
             }
+        }
+
+        static public int[] GetAllDigits()
+        {
+            return digitsArray;
         }
         static public int GetDigitCount(int digit)
         {

@@ -20,19 +20,19 @@ namespace Graphic
 
         private void BuildGraphicToolStripMenuItemClick(object sender, EventArgs e)
         {
-           ClearGraphic();
-           int numberOfPower;
-           if(IsNeedToBuildEmptyGraphic)
-           {
+            ClearGraphic();
+            int numberOfPower;
+            if (IsNeedToBuildEmptyGraphic())
+            {
                 SetDefaultParametresOfNumbers();
-           }
-           else if(int.TryParse(textBox.Text, out numberOfPower))
-           {
+            }
+            else if (int.TryParse(textBox.Text, out numberOfPower))
+            {
                 CountNumbers.FillCounters(numberOfPower);
-           }
-           PrintParametres();
+            }
+            PrintParametres();
         }
-        
+
         private void ClearGraphicToolStripMenuItemClick(object sender, EventArgs e)
         {
             ClearGraphic();
@@ -40,9 +40,9 @@ namespace Graphic
 
         private void ExitToolStripMenuItemClick(object sender, EventArgs e)
         {
-            if(MessageBox.Show(Config.EXIT_CLARIFICATION_TEXT,Config.WARNING_WINDOW_NAME_TEXT,MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show(Config.EXIT_CLARIFICATION_TEXT, Config.WARNING_WINDOW_NAME_TEXT, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                Application.Exit(); 
+                Application.Exit();
             }
         }
 
@@ -75,7 +75,7 @@ namespace Graphic
 
         private void PrintParametres()
         {
-            for(int i = 0; i < 9; i++)
+            for (int i = 0; i < 9; i++)
             {
                 this.chart.Series[i].Points.Add(CountNumbers.digitsArray[i]);
                 chart.Series[i]["PointWidth"] = "2.0";
