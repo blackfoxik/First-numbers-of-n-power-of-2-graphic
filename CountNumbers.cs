@@ -23,7 +23,6 @@ namespace Graphic
         public static int[] digitsArray = new int [9];
         static public void FillCounters(int N)
         {
-
             for (int i = 0; i <= N; i++)
             {
                 double Power = Math.Pow(2, i);

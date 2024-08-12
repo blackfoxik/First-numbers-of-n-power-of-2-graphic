@@ -18,27 +18,27 @@ namespace Graphic
             InitializeComponent();
         }
 
-        private void buildGraphicToolStripMenuItemClick(object sender, EventArgs e)
+        private void BuildGraphicToolStripMenuItemClick(object sender, EventArgs e)
         {
-           clearGraphic();
+           ClearGraphic();
            int numberOfPower;
            if(IsNeedToBuildEmptyGraphic)
            {
-                setDefaultParametresOfNumbers();
+                SetDefaultParametresOfNumbers();
            }
            else if(int.TryParse(textBox.Text, out numberOfPower))
            {
                 CountNumbers.FillCounters(numberOfPower);
            }
-           printParametres();
+           PrintParametres();
         }
         
-        private void clearGraphicToolStripMenuItemClick(object sender, EventArgs e)
+        private void ClearGraphicToolStripMenuItemClick(object sender, EventArgs e)
         {
-            clearGraphic();
+            ClearGraphic();
         }
 
-        private void exitToolStripMenuItemClick(object sender, EventArgs e)
+        private void ExitToolStripMenuItemClick(object sender, EventArgs e)
         {
             if(MessageBox.Show(Config.EXIT_CLARIFICATION_TEXT,Config.WARNING_WINDOW_NAME_TEXT,MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -46,15 +46,15 @@ namespace Graphic
             }
         }
 
-        private void textBoxKeyDown(object sender, KeyEventArgs e)
+        private void TextBoxKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == (char)Keys.Enter)
             {
-                buildGraphicToolStripMenuItemClick(sender, null);
+                BuildGraphicToolStripMenuItemClick(sender, null);
             }
         }
 
-        private void clearGraphic()
+        private void ClearGraphic()
         {
             for (int i = 0; i < 9; i++)
             {
@@ -63,17 +63,17 @@ namespace Graphic
             }
         }
 
-        private bool isNeedToBuildEmptyGraphic()
+        private bool IsNeedToBuildEmptyGraphic()
         {
             return textBox.Text == Config.RESET_COMMAND_TEXT ? true : false;
         }
 
-        private void setDefaultParametresOfNumbers()
+        private void SetDefaultParametresOfNumbers()
         {
             for (int i = 0; i < 9; i++) CountNumbers.digitsArray[i] = 0;
         }
 
-        private void printParametres()
+        private void PrintParametres()
         {
             for(int i = 0; i < 9; i++)
             {
