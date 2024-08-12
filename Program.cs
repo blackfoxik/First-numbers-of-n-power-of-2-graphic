@@ -9,14 +9,15 @@ namespace Graphic
     internal static class Program
     {
         /// <summary>
-        /// Main app run point
+        /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //TODO: - Add implementation here
+            var graphic = new FirstNumberOfNPowerOfTwoGraphicForm();
+            Application.Run(graphic);
         }
     }
 }
